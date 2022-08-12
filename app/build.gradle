@@ -33,37 +33,31 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.6.0-alpha01"
-    def arch_version = "2.1.0"
-
+    // RxJava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava3:3.0.0'
+    // RxJava Adapter for Retrofit
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    // Gson Converter for Retrofit
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-
+    // Architecture Components
+    def lifecycle_version = "2.6.0-alpha01"
+    def arch_version = "2.1.0"
+    // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    // Annotation Processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    // Reactive Streams
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
-    testImplementation "androidx.arch.core:core-testing:$arch_version"
-    testImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
-
+    // Room
     def room_version = "2.4.3"
-
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-    implementation "androidx.room:room-rxjava3:$room_version"
-    implementation "androidx.room:room-guava:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-    implementation "androidx.room:room-paging:2.5.0-alpha02"
+    // Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'

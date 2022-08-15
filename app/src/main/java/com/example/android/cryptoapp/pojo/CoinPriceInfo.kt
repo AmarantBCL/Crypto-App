@@ -27,7 +27,7 @@ data class CoinPriceInfo(
     val flags: String? = null,
     @SerializedName("PRICE")
     @Expose
-    val price: Double? = null,
+    val price: String? = null,
     @SerializedName("LASTUPDATE")
     @Expose
     val lastUpdate: Long? = null,
@@ -57,10 +57,10 @@ data class CoinPriceInfo(
     val openDay: Double? = null,
     @SerializedName("HIGHDAY")
     @Expose
-    val highDay: Double? = null,
+    val highDay: String? = null,
     @SerializedName("LOWDAY")
     @Expose
-    val lowDay: Double? = null,
+    val lowDay: String? = null,
     @SerializedName("OPEN24HOUR")
     @Expose
     val open24Hour: Double? = null,

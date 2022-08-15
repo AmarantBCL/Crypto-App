@@ -20,7 +20,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
     val priceList = db.coinPriceInfoDao().getPriceList()
 
-    fun getDetailedInfo(fSym: String): LiveData<CoinPriceInfo> {
+    fun getDetailInfo(fSym: String): LiveData<CoinPriceInfo> {
         return db.coinPriceInfoDao().getPriceInfoAboutCoin(fSym)
     }
 

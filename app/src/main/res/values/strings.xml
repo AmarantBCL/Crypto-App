@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Crypto App</string>
+    <string name="symbols_template">%s / %s</string>
+    <string name="last_update_template">Время последнего обновления: %s</string>
+    <string name="price">Цена:</string>
+    <string name="day_min">Минимум за день:</string>
+    <string name="day_max">Максимум за день:</string>
+    <string name="last_market">Последняя сделка:</string>
+    <string name="updated">Обновлено:</string>
+    <string name="slash">/</string>
+    <string name="crypto_logo">Логотип криптовалюты</string>
 </resources>

@@ -39,8 +39,8 @@ class CoinInfoAdapter(private val context: Context) :
                 val lastUpdateTemplate = context.resources.getString(R.string.last_update_template)
                 textViewSymbols.text = String.format(symbolsTemplate, fromSymbol, toSymbol)
                 textViewPrice.text = price.toString()
-                textViewUpdateTime.text = String.format(lastUpdateTemplate, convertTimestampToTime(lastUpdate))
-                Picasso.get().load(ApiFactory.BASE_IMAGE_URL + imageUrl).into(imageViewLogo)
+                textViewUpdateTime.text = String.format(lastUpdateTemplate, lastUpdate)
+                Picasso.get().load(imageUrl).into(imageViewLogo)
                 itemView.setOnClickListener {
                     listener?.onCoinClick(this)
                 }

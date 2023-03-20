@@ -43,10 +43,10 @@ class CoinDetailActivity : AppCompatActivity() {
             textViewMinPrice.text = it.lowDay
             textViewMaxPrice.text = it.highDay
             textViewLastMarket.text = it.lastMarket
-            textViewUpdate.text = convertTimestampToTime(it.lastUpdate)
+            textViewUpdate.text = it.lastUpdate
             textViewFromSymbol.text = it.fromSymbol
             textViewToSymbol.text = it.toSymbol
-            Picasso.get().load(ApiFactory.BASE_IMAGE_URL + it.imageUrl).into(imageViewLogo)
+            Picasso.get().load(it.imageUrl).into(imageViewLogo)
         }
     }
 

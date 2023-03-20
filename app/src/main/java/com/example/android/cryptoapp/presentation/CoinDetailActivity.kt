@@ -1,4 +1,4 @@
-package com.example.android.cryptoapp
+package com.example.android.cryptoapp.presentation
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.cryptoapp.api.ApiFactory
-import com.example.android.cryptoapp.viewmodel.CoinViewModel
+import com.example.android.cryptoapp.R
 import com.squareup.picasso.Picasso
 
 class CoinDetailActivity : AppCompatActivity() {

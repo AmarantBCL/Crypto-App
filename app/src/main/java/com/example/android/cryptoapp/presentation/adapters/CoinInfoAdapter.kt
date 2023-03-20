@@ -1,4 +1,4 @@
-package com.example.android.cryptoapp.adapters
+package com.example.android.cryptoapp.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.cryptoapp.R
-import com.example.android.cryptoapp.pojo.CoinPriceInfo
+import com.example.android.cryptoapp.data.model.CoinPriceInfo
 import com.squareup.picasso.Picasso
 
 class CoinInfoAdapter(private val context: Context) :

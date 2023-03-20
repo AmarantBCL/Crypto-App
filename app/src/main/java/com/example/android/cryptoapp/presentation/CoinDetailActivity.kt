@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.cryptoapp.R
+import com.example.android.cryptoapp.data.network.ApiFactory
+import com.example.android.cryptoapp.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 
 class CoinDetailActivity : AppCompatActivity() {
@@ -29,7 +31,7 @@ class CoinDetailActivity : AppCompatActivity() {
             finish()
             return
         }
-        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYMBOL)
+        val fromSymbol = intent.getStringExtra(EXTRA_FROM_SYMBOL) ?: EMPTY_SYMBOL
         if (fromSymbol == null) {
             finish()
             return
@@ -41,10 +43,10 @@ class CoinDetailActivity : AppCompatActivity() {
             textViewMinPrice.text = it.lowDay
             textViewMaxPrice.text = it.highDay
             textViewLastMarket.text = it.lastMarket
-            textViewUpdate.text = it.getFormattedTime()
+            textViewUpdate.text = convertTimestampToTime(it.lastUpdate)
             textViewFromSymbol.text = it.fromSymbol
             textViewToSymbol.text = it.toSymbol
-            Picasso.get().load(it.getFullImageUrl()).into(imageViewLogo)
+            Picasso.get().load(ApiFactory.BASE_IMAGE_URL + it.imageUrl).into(imageViewLogo)
         }
     }
 
@@ -61,6 +63,7 @@ class CoinDetailActivity : AppCompatActivity() {
 
     companion object {
         private const val EXTRA_FROM_SYMBOL = "fSym"
+        private const val EMPTY_SYMBOL = ""
 
         fun newIntent(context: Context, fromSymbol: String): Intent {
             val intent = Intent(context, CoinDetailActivity::class.java)

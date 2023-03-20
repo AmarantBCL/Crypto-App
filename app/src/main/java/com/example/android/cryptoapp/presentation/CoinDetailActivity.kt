@@ -9,24 +9,21 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.cryptoapp.R
 import com.example.android.cryptoapp.data.network.ApiFactory
+import com.example.android.cryptoapp.databinding.ActivityCoinDetailBinding
 import com.example.android.cryptoapp.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 
 class CoinDetailActivity : AppCompatActivity() {
 
+    private val binding by lazy {
+        ActivityCoinDetailBinding.inflate(layoutInflater)
+    }
+
     private lateinit var viewModel: CoinViewModel
-    private lateinit var textViewPrice: TextView
-    private lateinit var textViewMinPrice: TextView
-    private lateinit var textViewMaxPrice: TextView
-    private lateinit var textViewLastMarket: TextView
-    private lateinit var textViewUpdate: TextView
-    private lateinit var textViewFromSymbol: TextView
-    private lateinit var textViewToSymbol: TextView
-    private lateinit var imageViewLogo: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coin_detail)
+        setContentView(binding.root)
         if (!intent.hasExtra(EXTRA_FROM_SYMBOL)) {
             finish()
             return
@@ -36,29 +33,19 @@ class CoinDetailActivity : AppCompatActivity() {
             finish()
             return
         }
-        initViews()
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
         viewModel.getDetailInfo(fromSymbol).observe(this) {
-            textViewPrice.text = it.price
-            textViewMinPrice.text = it.lowDay
-            textViewMaxPrice.text = it.highDay
-            textViewLastMarket.text = it.lastMarket
-            textViewUpdate.text = it.lastUpdate
-            textViewFromSymbol.text = it.fromSymbol
-            textViewToSymbol.text = it.toSymbol
-            Picasso.get().load(it.imageUrl).into(imageViewLogo)
+            with(binding) {
+                tvPrice.text = it.price
+                tvDayMin.text = it.lowDay
+                tvDayMax.text = it.highDay
+                tvLastMarket.text = it.lastMarket
+                tvLastUpdate.text = it.lastUpdate
+                tvFromSymbol.text = it.fromSymbol
+                tvToSymbol.text = it.toSymbol
+                Picasso.get().load(it.imageUrl).into(imgBigCoinLogo)
+            }
         }
-    }
-
-    private fun initViews() {
-        textViewPrice = findViewById(R.id.tv_price)
-        textViewMinPrice = findViewById(R.id.tv_day_min)
-        textViewMaxPrice = findViewById(R.id.tv_day_max)
-        textViewLastMarket = findViewById(R.id.tv_last_market)
-        textViewUpdate = findViewById(R.id.tv_last_update)
-        textViewFromSymbol = findViewById(R.id.tv_from_symbol)
-        textViewToSymbol = findViewById(R.id.tv_to_symbol)
-        imageViewLogo = findViewById(R.id.img_big_coin_logo)
     }
 
     companion object {

@@ -7,7 +7,9 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_coin_price_list.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_main.xml" value="0.32083333333333336" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/coin_list_item.xml" value="0.32083333333333336" />
+        <entry key="app/src/main/res/layout-land/activity_coin_price_list.xml" value="0.25625" />
         <entry key="app/src/main/res/layout/activity_coin_detail.xml" value="0.11944444444444445" />
+        <entry key="app/src/main/res/layout/activity_coin_price_list.xml" value="0.11944444444444445" />
         <entry key="app/src/main/res/layout/fragment_coin_detail.xml" value="0.11944444444444445" />
       </map>
     </option>

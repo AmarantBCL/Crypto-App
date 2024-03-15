@@ -9,20 +9,28 @@ import com.example.android.cryptoapp.presentation.adapters.CoinInfoAdapter
 import com.example.android.cryptoapp.data.network.model.CoinInfoDto
 import com.example.android.cryptoapp.databinding.ActivityCoinPriceListBinding
 import com.example.android.cryptoapp.domain.CoinInfo
+import javax.inject.Inject
 
 class CoinPriceListActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: CoinViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     private val binding by lazy {
         ActivityCoinPriceListBinding.inflate(layoutInflater)
     }
 
-    private lateinit var viewModel: CoinViewModel
-    private lateinit var recyclerView: RecyclerView
+    private val component by lazy {
+        (application as CryptoApp).component
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        recyclerView = findViewById(R.id.recycler_view)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val adapter = CoinInfoAdapter(this)
         adapter.listener = object : CoinInfoAdapter.OnCoinClickListener {
             override fun onCoinClick(coinPriceInfo: CoinInfo) {
@@ -35,7 +43,7 @@ class CoinPriceListActivity : AppCompatActivity() {
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.itemAnimator = null
-        viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
+        viewModel = ViewModelProvider(this, viewModelFactory)[CoinViewModel::class.java]
         viewModel.coinInfoList.observe(this) {
             adapter.submitList(it)
         }
